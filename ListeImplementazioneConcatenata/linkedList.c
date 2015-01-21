@@ -1,22 +1,46 @@
 #include <stdlib.h>
 #include ".\linkedList.h"
-
 /*
  * Inserts the new key at the beginning of the list.
  * Returns the updated pointer to the first element of the list.
  */
 LLElement * LLInsertAtBeginning(LLElement * first, int key) {
-    // TODO To be implemented
-    return NULL;
+ // TODO To be implemented
+    
+    //first � un puntatore al primo elemento lista
+    // temp � un nodo generico
+    LLElement * temp;   
+    temp=(LLElement *)malloc(sizeof(LLElement)); 
+    
+    if(temp!=NULL){
+       temp=(LLElement *)malloc(sizeof(LLElement));
+       temp->key=key;
+       temp->next=first;
+    }
+    return (temp);
 }
 
 /*
- * Inserts the new key at the end of the list.
+  * Inserts the new key at the end of the list.
  * Returns the updated pointer to the first element of the list.
  */
 LLElement * LLInsertAtEnd(LLElement * first, int key) {
     // TODO To be implemented
-    return NULL;
+    
+    LLElement ** temp;
+    LLElement * new;  // nuovo vagone di coda
+    new=(LLElement *)malloc(sizeof(LLElement));
+    temp=&first;
+  
+     while (*temp!=NULL){
+        temp=&(*temp)->next;  
+    }
+ 
+     new->next=NULL;
+     new->key=key;
+     *temp=new;
+    return (first);  // ritorna il puntatore iniziale della lista 
+
 }
 
 /*
@@ -28,7 +52,25 @@ LLElement * LLInsertAtEnd(LLElement * first, int key) {
  */
 LLElement * LLInsertAtPosition(LLElement * first, int key, int position) {
     // TODO To be implemented
-    return NULL;
+
+    LLElement * new;
+    LLElement * temp;
+    LLElement * scambia;
+    new=(LLElement*)malloc(sizeof(LLElement)); 
+    
+    int i=0;
+    
+    temp=first;
+    
+    while (i!=position)
+    {
+        temp=temp->next;
+        i++;
+    }
+    scambia=temp->next;
+    temp->next=new;
+    new->next=scambia;
+    return (first);
 }
 
 /*
@@ -36,15 +78,32 @@ LLElement * LLInsertAtPosition(LLElement * first, int key, int position) {
  */
 int LLSize(LLElement * first) {
     // TODO To be implemented
-    return 0;
-}   
 
+    int i=0;
+    LLElement * temp;
+    temp=first;
+    while (temp!=NULL){
+                      //scorro la lista
+        temp=temp->next;  
+        i++; 
+    }
+    return (i);
+}   
 /*
  * Returns the key at the specified position.
  */ 
 int LLGetKey(LLElement * first, int position) {
     // TODO To be implemented
-    return 0;
+
+    LLElement * temp;
+    temp = first;
+    int i=0;
+    while (i<position)
+    {
+        temp=temp->next;
+        i++;
+    }
+    return (temp->key);
 }
 
 /*
@@ -63,7 +122,12 @@ int LLFindKey(LLElement * first, int key, int startPosition) {
  */
 LLElement * LLRemoveFirst(LLElement * first) {
     // TODO To be implemented
-    return NULL;
+    LLElement *temp;
+    temp=first;
+    first=first->next;
+    free(temp);
+    return (first);
+    
 }
 
 /*
@@ -72,9 +136,17 @@ LLElement * LLRemoveFirst(LLElement * first) {
  */
 LLElement * LLRemoveLast(LLElement * first) {
     // TODO To be implemented
-    return NULL;
-}
 
+     LLElement ** temp;
+     temp=&first;
+     while ((*temp)->next!=NULL){
+        temp=&(*temp)->next;  
+    }
+     *temp=NULL;
+    free(*temp);
+    return (first);
+
+}
 /*
  * Remove the element at the specified position.
  * Position is zero-based, meaning that the first element is at position 0,
@@ -84,9 +156,18 @@ LLElement * LLRemoveLast(LLElement * first) {
  */
 LLElement * LLRemoveAtPosition(LLElement * first, int position) {
     // TODO To be implemented
-    return NULL;
+    int i=0;
+    LLElement * prox;
+    LLElement ** temp;
+    
+    temp = &first;
+    
+    while (i < position){
+        temp=&((*temp)->next);
+        i++;
+    }
+    prox = (*temp)->next;
+    free(temp);
+    *temp=prox;
+    return (first);
 }
-
-
-
-
