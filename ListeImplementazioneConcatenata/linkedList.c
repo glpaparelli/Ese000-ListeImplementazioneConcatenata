@@ -57,19 +57,21 @@ LLElement * LLInsertAtPosition(LLElement * first, int key, int position) {
     LLElement * temp;
     LLElement * scambia;
     new=(LLElement*)malloc(sizeof(LLElement)); 
-    
+    new->key=key;
     int i=0;
-    
     temp=first;
     
-    while (i!=position)
+    while (i<(position-1))
     {
         temp=temp->next;
         i++;
     }
+    
     scambia=temp->next;
     temp->next=new;
     new->next=scambia;
+
+//    free(scambia);
     return (first);
 }
 
@@ -112,7 +114,16 @@ int LLGetKey(LLElement * first, int position) {
  * Returns -1 if not found. 
  */ 
 int LLFindKey(LLElement * first, int key, int startPosition) {
-    // TODO To be implemented
+    
+    
+    LLElement * temp;
+    
+    
+    
+    
+    
+    
+    
     return -1;
 }
 
