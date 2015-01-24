@@ -114,18 +114,31 @@ int LLGetKey(LLElement * first, int position) {
  * Returns -1 if not found. 
  */ 
 int LLFindKey(LLElement * first, int key, int startPosition) {
-    
-    
     LLElement * temp;
-    
-    
-    
-    
-    
-    
-    
-    return -1;
-}
+    int size;
+    int i=0;
+    size = LLSize(first);
+    temp = first;
+    while (i<startPosition)
+    {
+        temp = temp->next;
+        i++;
+    }       
+    while (startPosition<size)
+    {   
+        if (temp->key == key){
+            return(startPosition);
+        }
+        else{
+            temp=temp->next;
+            startPosition++;
+/*
+            if(temp->next == NULL){
+                return -1;
+*/
+            }
+        }
+    }
 
 /*
  * Remove the first element of the list.
