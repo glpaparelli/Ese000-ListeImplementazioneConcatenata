@@ -67,6 +67,3 @@ LLElement * LLRemoveLast(LLElement * first);
  * Returns the updated pointer to the first element of the list.
  */
 LLElement * LLRemoveAtPosition(LLElement * first, int position);
-
-
-

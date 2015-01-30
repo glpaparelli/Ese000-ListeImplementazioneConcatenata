@@ -91,7 +91,7 @@ int main(int argc, char** argv) {
     s = LLSize(list);
     for(i=0; i<s; i++)
         list = LLRemoveLast(list);
-    
+   
     assertSize(90, list, 0);
     
     
@@ -154,4 +154,3 @@ void printAndExit(int code, char message[]) {
     fprintf(stderr, "Asserzione %d fallita. %s", code, message);
     exit(code);
 }
-

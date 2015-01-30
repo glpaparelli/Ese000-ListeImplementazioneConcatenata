@@ -13,7 +13,7 @@ LLElement * LLInsertAtBeginning(LLElement * first, int key) {
     temp=(LLElement *)malloc(sizeof(LLElement)); 
     
     if(temp!=NULL){
-       temp=(LLElement *)malloc(sizeof(LLElement));
+     //  temp=(LLElement *)malloc(sizeof(LLElement));
        temp->key=key;
        temp->next=first;
     }
@@ -132,10 +132,6 @@ int LLFindKey(LLElement * first, int key, int startPosition) {
         else{
             temp=temp->next;
             startPosition++;
-/*
-            if(temp->next == NULL){
-                return -1;
-*/
             }
         }
     }
